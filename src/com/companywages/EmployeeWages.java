@@ -6,17 +6,25 @@ public class EmployeeWages {
 		int empCheck = (int) Math.floor(Math.random() * 10) % 3;
 		// System.out.println(empCheck);
 		return empCheck;
-
 	}
 
 	public static void empinfo(int empCheck) {
 		final int wagesperhrs = 120, workingday = 20;
-		int empHrs = 0, dailywages = 0;
+		int dailywages = 0;
 		int monthlyWage = 0;
+
+		// looping for n working days
+		int totalempHrs = 0;
+		int totalworkingdays = 0;
+		int workinghours = 100;
 		// number for 0 for absent 1 for present
 		empCheck = getRandomNumber();
-		// looping for n working days
-		for (int day = 1; day <= workingday; day++) {
+
+
+		while (totalempHrs <= workinghours && totalworkingdays <= workingday) {
+			int empHrs = 0;
+			totalworkingdays++;
+
 			// Switch to check employee is working full time, part time or absent
 			switch (empCheck) {
 			case 0:
@@ -29,11 +37,15 @@ public class EmployeeWages {
 				empHrs = 8;// Employee Fulltime present
 				break;
 			}
-			// Calculating Daily Wages and Monthly Wages of employee
+			// Calculating Daily Wages, Monthly Wages of employee
+
 			dailywages = wagesperhrs * empHrs;
 			monthlyWage = monthlyWage + dailywages;
+			// Total Hour calculation
+			totalempHrs = totalempHrs + empHrs;
 		}
-		System.out.println("Employee Wage daily is " + dailywages + " and Monthly Wage is " + monthlyWage);
+		System.out.println("Employee dailywages is " + dailywages + ", Monthly wages is " + monthlyWage
+				+ " and Total Hours is " + totalempHrs);
 
 	}
 
