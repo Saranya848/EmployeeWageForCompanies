@@ -1,0 +1,2 @@
+module wageforcompanies {
+}
